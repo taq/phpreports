@@ -71,7 +71,7 @@
 			$aParm["last"]		= $this->_sLast;
 			$aParm["next"]		= $this->_sNext;
 			$aParm["prev"]		= $this->_sPrev;
-			$aParm["xmlfile"]	= $this->getInput();
+			$aParm["xmlfile"]	= realpath($this->getInput());
 			$aParm["url"]		= $sHost."/tmp/page.php"; 
 			$aParm["body"]		= $this->getBody()?"true":"false";
 

@@ -3,7 +3,7 @@
 	require_once("PHPReportsUtil.php");
 	
 	$sPath  = getPHPReportsFilePath();
-	$sXML	  = $_REQUEST["xmlfile"];
+	$sXML	  = realpath($_REQUEST["xmlfile"]);
 	$sXSLT  = $sPath."/output/page/page.xsl";
 	$aParm  = Array();
 
@@ -20,7 +20,7 @@
 		$l2=$l1+($incr-1);
 	}
 
-	$aParm["xmlfile"] = $_REQUEST["xmlfile"];
+	$aParm["xmlfile"] = realpath($_REQUEST["xmlfile"]);
 	$aParm["curpage"]	= $curpage;
 	$aParm["incr"]		= $incr;
 	$aParm["l1"]		= $l1;
