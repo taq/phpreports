@@ -1,5 +1,16 @@
 -------------------------
-0.5.0 - Apr
+0.5.0 - January 2010 (wow!)
+
+Disclaimer: I was using this version for a long time but didn't released it
+because I was involved more with Ruby/Rails than PHP, so I was not so sure
+it was ready for production, even with my daily use. But everything seems
+ok, so, good luck!
+
+This code is already on Github: http://github.com/taq/phpreports
+
+I thank SourceForge for all the years of good service, but since they
+"renewed" the site I think its time to move, so all the development will
+be moved to Github.
 
 New features:
 
