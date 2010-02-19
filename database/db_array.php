@@ -41,7 +41,7 @@
 		}
 
 		function db_colnum($oStmt) {
-			return $this->_rows; 
+			return $this->_cols; 
 		}
 
 		function db_columnName($oStmt,$iPos) {
@@ -49,7 +49,7 @@
 		}
 		
 		function db_columnType($oStmt,$iPos) {
-			return gettype($this->_array[$this->_keys[$iPos]][0]);
+			return gettype($this->_array[$this->_keys[$iPos-1]][0]);
 		}
 
 		function db_fetch($oStmt) {
