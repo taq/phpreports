@@ -161,7 +161,7 @@
 				$sReplacedNames	= "";
 				$sTotals				= "";
 
-				$iColNum = PHPREportsDBI::db_colnum($this->_oQuery);
+				$iColNum = PHPReportsDBI::db_colnum($this->_oQuery);
 				for($i=1; $i<=$iColNum; $i++){
 					$sName				= PHPReportsDBI::db_columnName($this->_oQuery,$i);
 					$sExtra				= isNumericType(PHPReportsDBI::db_columnType($this->_oQuery,$i))?" ALIGN=\"RIGHT\"":"";
