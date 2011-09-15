@@ -102,6 +102,7 @@
 		function setPage(&$oPage_) {
 			$this->oPage=&$oPage_;
 		}
+
 		function &getPage() {
 			return $this->oPage;
 		}

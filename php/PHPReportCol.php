@@ -369,6 +369,12 @@
 		function resetPageNum(){
 			return $this->setPageNum(0);
 		}
+
+      function getGroupCount() {
+			$oPage =& $this->_oGroup->getPage();
+         $oDoc = $oPage->getDocument();
+			return $oDoc->getGroupCount()-1;
+      }
 		
 		/**
 			Sets the column group

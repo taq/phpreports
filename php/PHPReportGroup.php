@@ -25,6 +25,7 @@
 		var $_bDebug;
 		var $_oError;
 		var $_oForm;
+      var $_iGroupCount;
 
 		/*
 			Class constructor
@@ -46,6 +47,7 @@
 			$this->_bFirst				= true;
 			$this->_bDebug				= false;
 			$this->_oError				= new PHPReportsErrorTr();
+         $this->_iGroupCount     = 0;
 		}
 
 		/**
@@ -563,8 +565,10 @@
 
 					if(!$oPage->isOpen()){
 						$oPage->eventHandler(PAGE_OPEN);
+                  $oPage->getDocument()->incGroupCount();
 						return;
 					}
+               $oPage->getDocument()->incGroupCount();
 
 					if($this->isResetingSuppress()) 
 						$this->resetOldValues();
@@ -737,8 +741,17 @@
 		function setForm($oForm_=null){
 			$this->_oForm=$oForm_;
 		}
+
 		function getForm(){
 			return $this->_oForm;
 		}
+
+      function getGroupCount() {
+         return $this->_iGroupCount;
+      }
+
+      function incGroupCount() {
+         $this->_iGroupCount++;
+      }
 	}
 ?>

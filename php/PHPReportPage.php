@@ -57,6 +57,10 @@
 		function setDocument(&$oDoc_){
 			$this->_oDoc=&$oDoc_;
 		}
+
+      function getDocument() {
+         return $this->_oDoc;
+      }
 		
 		function setGroups(&$oGroups_) {
 			$this->_oGroups=&$oGroups_;
