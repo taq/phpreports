@@ -155,10 +155,20 @@
 			if(strlen($this->sThoSep)<1)
 				$this->sThoSep = ",";
 		}
+
+      function setDecSep($str) {
+			$this->sDecSep = $str;
+      }
+
 		function getDecSep() {
 			return $this->sDecSep;
 		}
-		function getThoSep() {
+
+      function setThoSep($str) {
+			$this->sThoSep = $str;
+      }
+      
+      function getThoSep() {
 			return $this->sThoSep;
 		}
 
