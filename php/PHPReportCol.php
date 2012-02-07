@@ -229,7 +229,7 @@
 			
 			// column value	
 			$this->avail();
-			return $this->getXMLOpen($iRow_).$sBookmark.$sLinkOpen.$sImg.($this->isSuppressed()&&strcmp($this->_oCurVal,$this->_oOldVal)==0?"&#160;":$this->_oCurVal).$sLinkClose.$this->getXMLClose();
+			return $this->getXMLOpen($iRow_).$sBookmark.$sLinkOpen.$sImg.($this->isSuppressed()&&strcmp($this->_oCurVal,$this->_oOldVal)==0?" ":$this->_oCurVal).$sLinkClose.$this->getXMLClose();
 		}
 
 		/**
