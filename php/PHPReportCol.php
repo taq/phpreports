@@ -277,7 +277,7 @@
 						$this->_oCurVal = sprintf($this->_sNform,$this->_oCurVal);
 				}
 				// number format extended
-				if($this->_iNformX>=0 && is_numeric($this->_oCurVal))
+				if($this->_iNformX>=0)
 					$this->_oCurVal = number_format($this->_oCurVal,$this->_iNformX,$this->_sDecSep,$this->_sThoSep);	
 			}
 			return $this->_oCurVal;
