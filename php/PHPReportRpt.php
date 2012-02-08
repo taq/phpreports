@@ -8,8 +8,6 @@
 		var $sBookmarksCSS;
 		var $iMarginWidth;
 		var $iMarginHeight;
-		var $sDecSep;		
-		var $sThoSep;	
 		var $sNoDataMsg;
 		var $_bCaseSensitive;	// case sensitive fields
 		var $_bReportEnd;			// did the report ends?
@@ -23,6 +21,8 @@
 		var $_iBookmarkCtrl;
 		var $_aCSS;
 		var $_aEnv;
+      var $_sDecSep;
+      var $_sThoSep;
 		
 		function PHPReportRpt($aEnv_=null) {
 			$this->sTitle				= "untitled";
@@ -39,6 +39,8 @@
 			$this->_iMaxRowBuffer	= 2500;
 			$this->_aCSS				= Array();
 			$this->_aEnv				= $aEnv_;
+         $this->_sDecSep         = null;
+         $this->_sThoSep         = null;
 			$this->configSep();
 		}
 
@@ -147,29 +149,33 @@
 		*/
 		function configSep() {
 			$oLocale				= localeconv();
-			$this->sDecSep		= $oLocale["mon_decimal_point"];
-			$this->sThoSep		= $oLocale["mon_thousands_sep"];
+			$this->_sDecSep	= $oLocale["mon_decimal_point"];
+			$this->_sThoSep	= $oLocale["mon_thousands_sep"];
 
-			if(strlen($this->sDecSep)<1)
-				$this->sDecSep = ".";
-			if(strlen($this->sThoSep)<1)
-				$this->sThoSep = ",";
+			if(strlen($this->_sDecSep)<1)
+				$this->_sDecSep = ".";
+			if(strlen($this->_sThoSep)<1)
+				$this->_sThoSep = ",";
 		}
 
-      function setDecSep($str) {
-			$this->sDecSep = $str;
+      function setDecimalsSeparator($str=null) {
+         if($str==null)
+            return;
+			$this->_sDecSep = $str;
       }
 
-		function getDecSep() {
-			return $this->sDecSep;
+		function getDecimalsSeparator() {
+			return $this->_sDecSep;
 		}
 
-      function setThoSep($str) {
-			$this->sThoSep = $str;
+      function setThousandsSeparator($str=null) {
+         if($str==null)
+            return;
+			$this->_sThoSep = $str;
       }
       
-      function getThoSep() {
-			return $this->sThoSep;
+      function getThousandsSeparator() {
+			return $this->_sThoSep;
 		}
 
 		function getNextBookmark() {

@@ -39,6 +39,30 @@ var $_oCon		= NULL;
 var $_oQuery	= NULL;
 var $_oFilters	= NULL;
 
+// decimals separator
+var $_sDecSep = null;
+var $_sThoSep = null;
+
+function setDecimalsSeparator($str=null) {
+   if($str==null)
+      return;
+   $this->_sDecSep = $str;
+}
+
+function getDecimalsSeparator() {
+   return $this->_sDecSep;
+}
+
+function setThousandsSeparator($str=null) {
+   if($str==null)
+      return;
+   $this->_sThoSep = $str;
+}
+
+function getThousandsSeparator() {
+   return $this->_sThoSep;
+}
+
 function setDatabaseConnection(&amp;$_oCon){
 	$this->_oCon =&amp; $_oCon;
 }

@@ -384,8 +384,8 @@
 			$this->_oGroup=&$oGroup_;
 			$oRpt=$oGroup_->getReport();
 			if(!is_null($oRpt)) {
-				$this->_sDecSep=$oRpt->getDecSep();
-				$this->_sThoSep=$oRpt->getThoSep();
+				$this->_sDecSep=$oRpt->getDecimalsSeparator();
+				$this->_sThoSep=$oRpt->getThousandsSeparator();
 			}
 		}
 

@@ -50,6 +50,8 @@
 		var $_bDeleteXML;		// if needs to delete the XML file after using it
 		var $_oError;
 		var $_oInput;			// input plugins
+      var $_sDecSep;       // decimals separator
+      var $_sThoSep;       // thousands separator
 
 		/***************************************************************************
 		*																									*
@@ -86,6 +88,8 @@
 			$this->_bDeleteXML		= false;
 			$this->_oError				= new PHPReportsErrorTr();
 			$this->_oInput				= Array();
+         $this->_sDecSep         = null;
+         $this->_sThoSep         = null;
 
 			/*
 				Now we get the XSLT processor
@@ -296,6 +300,10 @@
 			$oReport->setDatabaseConnection($this->_oCon);
 			$oReport->setInputFilters($this->_oInput);
 			$oReport->setQuery($this->_oQuery);
+
+         // set the separators, if any
+         $oReport->setDecimalsSeparator($this->getDecimalsSeparator());
+         $oReport->setThousandsSeparator($this->getThousandsSeparator());
 
 			// run the generated class
 			$this->_sXMLOutputFile = $oReport->run($this->_sXMLOutputFile,$this->_aEnv);
@@ -836,6 +844,26 @@
 		function getBody(){
 			return $this->_bBody;
 		}
+
+      function setDecimalsSeparator($str=null) {
+         if($str==null)
+            return;
+         $this->_sDecSep=$str;
+      }
+
+      function getDecimalsSeparator() {
+         return $this->_sDecSep;
+      }
+
+      function setThousandsSeparator($str=null) {
+         if($str==null)
+            return;
+         $this->_sThoSep=$str;
+      }
+
+      function getThousandsSeparator() {
+         return $this->_sThoSep;
+      }
 	}
 
 	class PHPReportTemplateElement {

@@ -49,6 +49,8 @@
 		<xsl:value-of select="@MAX_ROW_BUFFER"/>
 		<xsl:text>);&#10;</xsl:text>
 	</xsl:if>
+   $oReport->setDecimalsSeparator($this->getDecimalsSeparator());
+   $oReport->setThousandsSeparator($this->getThousandsSeparator());
 	
 	// create a default error object for translation, if needed
 	$oError = new PHPReportsErrorTr();
