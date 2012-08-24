@@ -359,10 +359,10 @@
 		function showMsg($sMsg_=null,$oParms_=null){
 			if(!$sMsg_)
 				return;
-			if($_SESSION["phpReportsLanguage"])
+			if(isset($_SESSION["phpReportsLanguage"]))
 				$sLang = $_SESSION["phpReportsLanguage"];
 			else
-				$sLang = $GLOBALS["phpReportsLanguage"];
+				$sLang = isset($GLOBALS["phpReportsLanguage"]) ? $GLOBALS["phpReportsLanguage"] : null;
 			if(!$sLang)
 				$sLang = "default";
 
