@@ -28,7 +28,7 @@
 
 		function db_fetch($oStmt) {
 			$aArray = Array();
-			if(!@ociFetchInto($oStmt,&$aArray,OCI_ASSOC+OCI_RETURN_NULLS))
+			if(!@ociFetchInto($oStmt,$aArray,OCI_ASSOC+OCI_RETURN_NULLS))
 				return false;
 			return $aArray;
 		}

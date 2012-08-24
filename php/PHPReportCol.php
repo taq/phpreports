@@ -123,9 +123,9 @@
 			$sStr		= "<C ";
 			
 			// check for even and odd cell classes
-			if(!is_null($this->_sEvenClass)&&$iRow_%2==0) 
+			if(!is_null($this->_sEvenClass) && $iRow_%2==0) 
 				$sStr .="CC=\"".$this->_sEvenClass."\" ";
-			else if(!is_null($this->_sOddClass)&&$iRow_%2>0) 
+			else if(!is_null($this->_sOddClass) && $iRow_%2>0) 
 				$sStr .="CC=\"".$this->_sOddClass."\" ";
 
 			// check for expression on the CELLCLASS parameter
@@ -352,17 +352,17 @@
 		}
 
 		function getRowNum() {
-			$oPage =& $this->_oGroup->getPage();
+			$oPage = $this->_oGroup->getPage();
 			return $oPage->getRowNum();
 		}
 		
 		function getPageNum() {
-			$oPage =& $this->_oGroup->getPage();
+			$oPage = $this->_oGroup->getPage();
 			return $oPage->getPageNum();
 		}
 		
 		function setPageNum($iNum_=0) {
-			$oPage =& $this->_oGroup->getPage();
+			$oPage = $this->_oGroup->getPage();
 			return $oPage->setPageNum($iNum_);
 		}
 
@@ -371,7 +371,7 @@
 		}
 
       function getGroupCount() {
-			$oPage =& $this->_oGroup->getPage();
+			$oPage = $this->_oGroup->getPage();
          $oDoc = $oPage->getDocument();
 			return $oDoc->getGroupCount()-1;
       }
@@ -381,7 +381,7 @@
 			@param Object group
 		*/
 		function setGroup(&$oGroup_) {
-			$this->_oGroup=&$oGroup_;
+			$this->_oGroup=$oGroup_;
 			$oRpt=$oGroup_->getReport();
 			if(!is_null($oRpt)) {
 				$this->_sDecSep=$oRpt->getDecimalsSeparator();
@@ -483,7 +483,7 @@
 		}
 
 		function getNextBookmark() {
-			$oRpt=&$this->_oGroup->getReport();
+			$oRpt=$this->_oGroup->getReport();
 			return $oRpt->getNextBookmark();
 		}
 
@@ -492,7 +492,7 @@
 		}
 
 		function getFileName(){
-			$oPage =& $this->_oGroup->getPage();
+			$oPage = $this->_oGroup->getPage();
 			return basename($oPage->getFileName());
 		}
 

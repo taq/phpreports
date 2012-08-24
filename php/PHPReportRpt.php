@@ -102,7 +102,7 @@
 		
 		// page 
 		function setPage(&$oPage_) {
-			$this->oPage=&$oPage_;
+			$this->oPage=$oPage_;
 		}
 
 		function &getPage() {
@@ -111,7 +111,7 @@
 
 		// form
 		function setForm(&$oForm_) {
-			$this->oForm=&$oForm_;
+			$this->oForm=$oForm_;
 		}
 		function &getForm() {
 			return $this->oForm;

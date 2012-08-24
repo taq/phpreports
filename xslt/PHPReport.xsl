@@ -64,15 +64,15 @@ function getThousandsSeparator() {
 }
 
 function setDatabaseConnection(&amp;$_oCon){
-	$this->_oCon =&amp; $_oCon;
+	$this->_oCon = $_oCon;
 }
 
 function setQuery(&amp;$_oQuery){
-	$this->_oQuery =&amp; $_oQuery;
+	$this->_oQuery = $_oQuery;
 }
 
 function setInputFilters(&amp;$_oFilters){
-	$this->_oFilters =&amp; $_oFilters;
+	$this->_oFilters = $_oFilters;
 }
 
 function run($sXMLOutputFile=null,$aEnv_=null) {

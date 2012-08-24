@@ -70,11 +70,11 @@
 			$rs_assoc = Array();
 			if(PHP_VERSION>"4.1"){
 				if($rownumber<0)
-					odbc_fetch_into($result,&$rs);
+					odbc_fetch_into($result,$rs);
 				else
-					odbc_fetch_into($result, &$rs, $rownumber);
+					odbc_fetch_into($result, $rs, $rownumber);
 			}else
-				odbc_fetch_into($result, $rownumber, &$rs);
+				odbc_fetch_into($result, $rownumber, $rs);
 				
 			foreach($rs as $key => $value)
 				$rs_assoc[odbc_field_name($result, $key+1)] = $value;

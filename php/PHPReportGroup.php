@@ -63,12 +63,12 @@
 			@param Object report object
 		*/
 		function setReport(&$oRpt_) {
-			$this->_oReport =& $oRpt_;
+			$this->_oReport = $oRpt_;
 		}
 		
 		/**
 			Returns the main report object
-			(use like this $oRpt =& $this->getReport();)
+			(use like this $oRpt = $this->getReport();)
 			@return Object report object
 		*/			
 		function &getReport() {
@@ -142,7 +142,7 @@
 			@param Object child group
 		*/
 		function addChild(&$oChild_) {
-			$this->_oChild=&$oChild_;
+			$this->_oChild=$oChild_;
 		}
 
 		/**
@@ -235,7 +235,7 @@
 				print "(".$this->getName()."):printFooter:flag ".($this->_bFooter?"ON":"OFF").":first field value:".$this->getValueByPos(0)."<br>";
 				
 			if(!$this->_bFooter&&sizeof($this->_oFooter)>0) {
-				$oPage =& $this->getPage();
+				$oPage = $this->getPage();
 				$this->_bFooter=true; // isso estava duas linhas abaixo
 				$this->printRows($this->_oFooter,$bCount_);
 				$this->_bHeader=false;
@@ -256,7 +256,7 @@
 					print "REPORT ELEMENT IS NOT OK (".$this->getName().")<br>";
 					return;
 				}
-				$oPage =& $this->_oReport->getPage();
+				$oPage = $this->_oReport->getPage();
 			}	
 			// checks the page element
 			if(!isset($oPage)) {
@@ -273,11 +273,11 @@
 			if(!isset($oRows_))
 				return;
 			
-			$oPage =& $this->getPage();
+			$oPage = $this->getPage();
 			$iRow = $oPage->getNextRow();	
 			$iSize=sizeof($oRows_);
 			for($i=0;$i<$iSize;$i++,$iRow++) {
-				$oObj=& $oRows_[$i];
+				$oObj= $oRows_[$i];
 				$oPage->printRow($oObj->getRowValue($iRow),$bCount_,$bConsumed_);
 			}								
 		}
@@ -287,7 +287,7 @@
 			@param Array field rows
 		*/
 		function setFieldRows($oFieldRows_=null) {
-			$this->_oFieldRows=&$oFieldRows_;
+			$this->_oFieldRows=$oFieldRows_;
 		}
 
 		function &getFieldRows() {
@@ -314,7 +314,7 @@
 			$iColNum	= sizeof($oKeys);
 			for($i=0;$i<$iColNum;$i++) {
 				$sKey		= $oKeys[$i];
-				$oObj	   =&$this->_oFields[$sKey];	
+				$oObj	   = $this->_oFields[$sKey];	
 				$sName	= $oObj->getName();		
 				$oVal		= $oDataRow_[$sName];
 				$oObj->setVal($oVal); // here's the trick part - no stats here, just value		
@@ -372,7 +372,7 @@
 			
 			// print the fields if it is a field group
 			if($this->isFieldGroup()) {
-				$oPage =& $this->getPage();
+				$oPage = $this->getPage();
 				$oPage->processValues($oDataRow_);
 				$this->printRows($this->_oFieldRows);
 			}
@@ -397,7 +397,7 @@
 			$iColNum	= sizeof($oKeys);
 			for($i=0;$i<$iColNum;$i++) {
 				$sKey		= $oKeys[$i];
-				$oObj	   =&$this->_oFields[$sKey];	// get the field object
+				$oObj	   = $this->_oFields[$sKey];	// get the field object
 				$sName	= $oObj->getName();			// get the field name
 				$oVal		= $oDataRow_[$sName];		// get the field value, returned from the query
 				$oObj->set($oVal);						// set the field object value 
@@ -521,8 +521,8 @@
 			@param int event
 		*/
 		function eventHandler($iEvent_=-1,$oObj_=null) {
-			$oPage =& $this->getPage();
-			$oRepo =& $this->getReport();
+			$oPage = $this->getPage();
+			$oRepo = $this->getReport();
 			
 			switch($iEvent_) {
 				case PUT_DATA:
@@ -585,8 +585,8 @@
 					if($this->isDebugging())
 						print "<font color='#e00000'>(".$this->getName()."):GROUP CLOSE:first field value:".$this->getValueByPos(0)."</font><br>";
 					
-					$oRepo =& $this->getReport();
-					$oPage =& $this->getPage();	
+					$oRepo = $this->getReport();
+					$oPage = $this->getPage();	
 					if(!is_null($this->_oChild)){
 						$this->_oChild->eventHandler($iEvent_);
 						$this->_oChild->resetOldExpr();
@@ -617,20 +617,20 @@
 					if($this->isDebugging())
 						print "(".$this->getName()."):PAGE_OPEN:first field value:".$this->getValueByPos(0)."<br>";
 					
-					if($this->isDebugging()&&$this->isReprintingHeader())
+					if($this->isDebugging() && $this->isReprintingHeader())
 						print "(".$this->getName()."):PAGE_OPEN:need to reprinting header<br>";
 
-					if($this->isDebugging()&&$this->isFirst())
+					if($this->isDebugging() && $this->isFirst())
 						print "(".$this->getName()."):PAGE_OPEN:is first time<br>";
 
-					if($this->isReprintingHeader()&&$this->isOpen()) //||$this->isFirst())
+					if($this->isReprintingHeader() && $this->isOpen()) //||$this->isFirst())
 						$this->_bHeader=false;
 					
 					if($this->isDebugging())
 						print "(".$this->getName()."):HEADER is ".($this->_bHeader?"ON":"OFF").", FOOTER is ".($this->_bFooter?"ON":"OFF")."<br>";
 					
 					if(!$this->_bHeader&&!$this->_bFooter){	
-						$oRepo =& $this->getReport();
+						$oRepo = $this->getReport();
 						if(!is_null($oRepo)&&!$oRepo->isReportEnd()){
 							if($this->isDebugging())
 								print "(".$this->getName()."):PAGE_OPEN:printing header<br>";
@@ -666,7 +666,7 @@
 			$iColNum	= sizeof($oKeys);
 			for($i=0;$i<$iColNum;$i++) {
 				$sKey		= $oKeys[$i];
-				$oObj	   =&$this->_oFields[$sKey];
+				$oObj	   = $this->_oFields[$sKey];
 				if($bOnlyStats_)
 					$oObj->resetStats();
 				else
@@ -706,7 +706,7 @@
 		}
 
 		function getParameter($oKey_){
-			$oRepo =& $this->getReport();
+			$oRepo = $this->getReport();
 			return $oRepo->getParameter($oKey_);
 		}
 

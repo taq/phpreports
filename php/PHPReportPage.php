@@ -55,7 +55,7 @@
 		}
 
 		function setDocument(&$oDoc_){
-			$this->_oDoc=&$oDoc_;
+			$this->_oDoc=$oDoc_;
 		}
 
       function getDocument() {
@@ -63,7 +63,7 @@
       }
 		
 		function setGroups(&$oGroups_) {
-			$this->_oGroups=&$oGroups_;
+			$this->_oGroups=$oGroups_;
 		}
 
 		function setClass($sClass_=null){
@@ -370,7 +370,7 @@
 					$this->printHeader();
 					
 					if(!is_null($this->_oGroups)) {
-						$oGroup =& $this->_oGroups;
+						$oGroup = $this->_oGroups;
 						if($oGroup->isFirst()){
 							if($this->isDebugging())
 								print "(".$this->getName()."):PAGE_OPEN:putting data to ".$oGroup->getName()."<br>";
@@ -393,7 +393,7 @@
 							print "<font color='#FF0000'>(PAGE):PAGE_CLOSE:first field value:".$this->getValueByPos(0)."<hr></font><br>";
 						
 						if(!is_null($this->_oGroups)) {
-							$oGroup =& $this->_oGroups;
+							$oGroup = $this->_oGroups;
 							$oGroup->eventHandler($iEvent_);
 						}
 					}

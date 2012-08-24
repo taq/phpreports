@@ -10,7 +10,7 @@
 			Add a column in the row
 		*/
 		function addCol(&$oCol_) {
-			array_push($this->_aCols,&$oCol_);
+			array_push($this->_aCols,$oCol_);
 		}
 
 		function &getCols() {
@@ -45,7 +45,7 @@
 			$sSep2=""; // \n
 			
 			for($i=0;$i<$iSize;$i++) {
-				$oCol	 =& $this->_aCols[$i];
+				$oCol	 = $this->_aCols[$i];
 				$oVal  = $oCol->getColValue($iRow_);
 				$sStr .= $sSep1.$sTabs.$oVal.$sSep2;
 			}
@@ -60,7 +60,7 @@
 			$sStr = "";
 			$iSize=sizeof($this->_aCols);	
 			for($i=0;$i<$iSize;$i++) {
-				$oCol	=& $this->_aCols[$i];
+				$oCol	= $this->_aCols[$i];
 				$sStr .= $oCol->getExpr();
 			}
 			return $sStr;
@@ -69,7 +69,7 @@
 		function resetOldValue() {
 			$iSize=sizeof($this->_aCols);	
 			for($i=0;$i<$iSize;$i++) {
-				$oCol	=& $this->_aCols[$i];
+				$oCol	= $this->_aCols[$i];
 				$oCol->resetOldValue();	
 			}
 		}
@@ -77,7 +77,7 @@
 		function debug() {
 			$iSize=sizeof($this->_aCols);
 			for($i=0;$i<$iSize;$i++) {
-				$oCol =& $this->_aCols[$i];
+				$oCol = $this->_aCols[$i];
 				$oCol->debug();
 			}
 		}
