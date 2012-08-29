@@ -70,7 +70,7 @@
 	<xsl:apply-templates/>
 
 	// if there is a form
-	if($oForm)
+	if(isset($oForm))
 		$oDoc->setForm($oForm);
 	
 	// there must be a PAGE element here
