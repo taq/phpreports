@@ -40,15 +40,15 @@
 		$oGrp_<xsl:value-of select="$group_name"/>-&gt;setDebug(&quot;<xsl:value-of select="/REPORT/DEBUG"/>&quot;);
 	</xsl:if>	
 	
-	$oGroup =&amp; $oGrp_<xsl:value-of select="$group_name"/>;
+	$oGroup = $oGrp_<xsl:value-of select="$group_name"/>;
 	
 	<xsl:if test="count(preceding-sibling::*)+1=1">
-		$oGrpMain_ =&amp; $oGrp_<xsl:value-of select="$group_name"/>;
+		$oGrpMain_ = $oGrp_<xsl:value-of select="$group_name"/>;
 	</xsl:if>
 	
 	<xsl:apply-templates/>
 	<xsl:if test="name(..)='GROUP'">
-		$oGrp_<xsl:value-of select="$prev_group_name"/>-&gt;addChild(&amp;$oGrp_<xsl:value-of select="$group_name"/>);
+		$oGrp_<xsl:value-of select="$prev_group_name"/>-&gt;addChild($oGrp_<xsl:value-of select="$group_name"/>);
 	</xsl:if>
 </xsl:template>
 

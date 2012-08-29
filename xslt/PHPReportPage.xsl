@@ -4,7 +4,7 @@
 	<xsl:text>
 	// inserting here the page element ...
 	$oPage  = new PHPReportPage($sXMLOutputFile);</xsl:text>
-	$oPage->setReport(&amp;$oReport);
+	$oPage->setReport($oReport);
 	$oPage->setLimit($oReport->getMaxRowBuffer());
 
 	// page attributes
@@ -36,7 +36,7 @@
 		$oPage->setDebug(&quot;<xsl:value-of select="/REPORT/DEBUG"/>&quot;);
 	</xsl:if>
 	
-	$oGroup =&amp; $oPage;
+	$oGroup = $oPage;
 	<xsl:apply-templates/>
 	<!--$oPage->setFields($oFields);
 	<xsl:if test="string-length(/REPORT/TEMP)>0">

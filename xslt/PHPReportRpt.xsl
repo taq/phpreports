@@ -64,8 +64,8 @@
 	// document layer
 	$oDoc = new PHPReportGroup("DOCUMENT LAYER");
 	$oDoc->setFields($oFields);
-	$oDoc->setReport(&amp;$oReport);
-	$oGroup =&amp; $oDoc;
+	$oDoc->setReport($oReport);
+	$oGroup = $oDoc;
 	
 	<xsl:apply-templates/>
 
@@ -83,11 +83,11 @@
 	</xsl:if>
 			
 	$oPage->setFields($oFields);
-	$oPage->setGroups(&amp;$oGrpMain_);
+	$oPage->setGroups($oGrpMain_);
 	
 	$oDoc->setReport($oReport);
 	$oDoc->addChild($oGrpMain_);
-	$oPage->setDocument(&amp;$oDoc);
+	$oPage->setDocument($oDoc);
 
 	$oPage->eventHandler(REPORT_OPEN);
 	$oDoc->eventHandler(REPORT_OPEN);
@@ -230,7 +230,10 @@
 	else 
 		$oCon = $this->_oCon;
 
-	if(!is_resource($oCon) &amp;&amp; !is_array($oCon))
+   // some database interfaces doesn't returns resources, cool, uh? :-p
+   $ignored_con = array("sqlite3");
+
+	if(!is_resource($oCon) &amp;&amp; !is_array($oCon) &amp;&amp; !in_array($sIf,$ignored_con))
 		$oError->showMsg("INVALIDCON");
 
 	// input filters
