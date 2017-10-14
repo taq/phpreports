@@ -60,7 +60,7 @@
 			}
 
 			// get the HOST root URL
-			$sHost = "http://".$_SERVER["HTTP_HOST"];
+			$sHost = "//".$_SERVER["HTTP_HOST"];
 			
 			$aParm  = Array();
 			$aParm["curpage"]=1;
