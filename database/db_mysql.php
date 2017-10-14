@@ -14,7 +14,7 @@
 		}
 
 		function db_query($oCon,$sSQL) {
-			$oStmt = mysqli_query($sSQL,$oCon);
+			$oStmt = mysqli_query($oCon,$sSQL);
 			return $oStmt;
 		}
 
@@ -23,10 +23,12 @@
 		}
 
 		function db_columnName($oStmt,$iPos) {
+			require_once('MySQLi-Function/mysqli_field_name.php');
 			return mysqli_field_name($oStmt,$iPos-1);
 		}
 		
 		function db_columnType($oStmt,$iPos) {
+			require_once('MySQLi-Function/mysqli_field_type.php');
 			return mysqli_field_type($oStmt,$iPos-1);
 		}
 
