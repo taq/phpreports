@@ -233,7 +233,7 @@
    // some database interfaces doesn't returns resources, cool, uh? :-p
    $ignored_con = array("sqlite3");
 
-	if(!is_resource($oCon) &amp;&amp; !is_array($oCon) &amp;&amp; !in_array($sIf,$ignored_con))
+	if(!is_object($oCon) &amp;&amp; !in_array($sIf,$ignored_con))
 		$oError->showMsg("INVALIDCON");
 
 	// input filters
