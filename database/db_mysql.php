@@ -1,4 +1,7 @@
 <?php
+	require_once('MySQLi-Function/mysqli_field_name.php');
+	require_once('MySQLi-Function/mysqli_field_type.php');
+	
 	class PHPReportsDBI {
 		function db_connect($oArray) {
 			$oCon = mysqli_connect($oArray[2], $oArray[0], $oArray[1]);
@@ -23,12 +26,10 @@
 		}
 
 		function db_columnName($oStmt,$iPos) {
-			require_once('MySQLi-Function/mysqli_field_name.php');
 			return mysqli_field_name($oStmt,$iPos-1);
 		}
 		
 		function db_columnType($oStmt,$iPos) {
-			require_once('MySQLi-Function/mysqli_field_type.php');
 			return mysqli_field_type($oStmt,$iPos-1);
 		}
 
