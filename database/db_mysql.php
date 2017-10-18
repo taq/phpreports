@@ -1,7 +1,10 @@
 <?php
+	require_once('MySQLi-Function/mysqli_field_name.php');
+	require_once('MySQLi-Function/mysqli_field_type.php');
+	
 	class PHPReportsDBI {
 		function db_connect($oArray) {
-			$oCon = mysql_connect($oArray[2], $oArray[0], $oArray[1]);
+			$oCon = mysqli_connect($oArray[2], $oArray[0], $oArray[1]);
 			if(!$oCon)
 				die("could not connect");
 			if(!is_null($oArray[3]))
@@ -10,36 +13,36 @@
 		}
 
 		function db_select_db($sDatabase) {
-			mysql_select_db($sDatabase);
+			mysqli_select_db($sDatabase);
 		}
 
 		function db_query($oCon,$sSQL) {
-			$oStmt = mysql_query($sSQL,$oCon);
+			$oStmt = mysqli_query($oCon,$sSQL);
 			return $oStmt;
 		}
 
 		function db_colnum($oStmt) {
-			return mysql_num_fields($oStmt);
+			return mysqli_num_fields($oStmt);
 		}
 
 		function db_columnName($oStmt,$iPos) {
-			return mysql_field_name($oStmt,$iPos-1);
+			return mysqli_field_name($oStmt,$iPos-1);
 		}
 		
 		function db_columnType($oStmt,$iPos) {
-			return mysql_field_type($oStmt,$iPos-1);
+			return mysqli_field_type($oStmt,$iPos-1);
 		}
 
 		function db_fetch($oStmt) {
-			return mysql_fetch_array($oStmt);
+			return mysqli_fetch_array($oStmt);
 		}
 
 		function db_free($oStmt) {
-			return mysql_free_result($oStmt);
+			return mysqli_free_result($oStmt);
 		}
 
 		function db_disconnect($oCon) {
-			return mysql_close($oCon);
+			return mysqli_close($oCon);
 		}
 	}	
 ?>

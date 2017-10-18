@@ -230,11 +230,13 @@
 	else 
 		$oCon = $this->_oCon;
 
-   // some database interfaces doesn't returns resources, cool, uh? :-p
-   $ignored_con = array("sqlite3");
+	// some database interfaces doesn't returns resources, cool, uh? :-p
+	$ignored_con = array("sqlite3", "mysql");
 
-	if(!is_resource($oCon) &amp;&amp; !is_array($oCon) &amp;&amp; !in_array($sIf,$ignored_con))
-		$oError->showMsg("INVALIDCON");
+	if(!is_resource($oCon) &amp;&amp; !is_array($oCon)) { 
+		if(!in_array($sIf,$ignored_con) || !$oCon)
+			$oError->showMsg("INVALIDCON");
+	}
 
 	// input filters
 	if($this->_oFilters){
